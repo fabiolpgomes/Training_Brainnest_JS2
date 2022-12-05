@@ -34,7 +34,7 @@ names[0] = "Aleksa" // Fabio was changed for Aleksa
 Create an array, Create an array by encapsulating array elements in squared brackets: name = ["Fabio", "Joaquim", "Rosangela"]
 
 concat()	Joins arrays and returns an array with the joined arrays
-constructor	Returns the function that created the Array object's prototype
+onstructor	Returns the function that created the Array object's prototype
 copyWithin()	Copies array elements within the array, to and from specified positions
 entries()	Returns a key/value pair Array Iteration Object
 every()	Checks if every element in an array pass a test
