@@ -166,7 +166,6 @@ unshift() Adds new elements to the beginning of an array, and returns the new le
 
 valueOf() Returns the primitive value of an array
 
-
 ### 9. What are loops useful for?
 
 If you want to loop through the array and find a specific one.
@@ -199,25 +198,24 @@ Create an element <p> using document. createElement("p").
 Create a text, using document. ...
 Using appendChild() try to append the created element, along with text, to the existing div tag.
 
-
 ### 16. How do you remove an element from the DOM?
 
 parentNode.removeChild(child) removes child from parentNode on the DOM and returns a reference to child
 
-
 ### 17. How can you alter an element in the DOM?
 
 When you have a reference to an element, you can use that reference to alter the element’s own properties. This allows you to do many useful alterations, like adding/removing and altering attributes, changing classes, adding inline style information and more.
-
 
 ### 18. When adding text to a DOM element, should you use textContent or innerHTML?
 
 Using textContent is recommended when inserting plain text.
 
 ### 19. Where should you include your JavaScript tag in your HTML file when working with DOM nodes?
+
 ```
 The <script> tag can be placed in the <head> section of your HTML or in the <body> section, depending on when you want the JavaScript to load
 ```
+
 ### 20. How do “events” and “listeners” work?
 
 Events are actions or occurrences that happen in the system you are programming, which the system tells you about so your code can react to them.
@@ -227,15 +225,17 @@ An event listener is a function that initiates a predefined process if a specifi
 ### 21. What are three ways to use events in your code?
 
 Inline Event Handlers - The easiest way to get started with events in JavaScript is to use an inline event handler. This means that you’ll define your event in your HTML file.
-```<button onclick="submitForm()">Submit form</button>```
+`<button onclick="submitForm()">Submit form</button>`
 
 Events with Handler Properties - In an inline handler, you need to specify which function you want to execute in your HTML file.
-```<button onclick="submitForm()">Submit form</button>``` 
+`<button onclick="submitForm()">Submit form</button>`
 
 Event Listener - Event listeners can be used to declare an event in JavaScript. Listeners are always looking for when the state of an element is changed, and if that element is changed, the code in the listener will be executed.
-```const submitForm = () => {
-	const text = document.getElementById("submitted");
-	text.textContent = "Form submitted."
+
+```
+const submitForm = () => {
+const text = document.getElementById("submitted");
+text.textContent = "Form submitted."
 }
 
 const button = document.getElementById("button")
@@ -244,16 +244,119 @@ button.addEventListener("click", submitForm);
 
 ### 22. Why are event listeners the preferred way to handle events?
 
+Use event listeners over event handlers because you can add multiple event listeners for the same event.
+
 ### 23. What are the benefits of using named functions in your listeners?
+
+A named function helps keep your code more DRY (an acronym for Don't Repeat Yourself). Second, you can remove them later if you want using removeEventListener() . You cannot do this with anonymous functions.
 
 ### 24. How do you attach listeners to groups of nodes?
 
+You can call querySelectorAll() on all elements with a specific class, then use forEach() to iterate on them:
+
+```
+document.querySelectorAll('.some-class').forEach(item => {
+  item.addEventListener('click', event => {
+    //handle click
+  })
+})
+```
+
+If you don’t have a common class for your elements you can build an array on the fly:
+
+```
+[document.querySelector('.a-class'), document.querySelector('.another-class')].forEach(item => {
+  item.addEventListener('click', event => {
+    //handle click
+  })
+})
+```
+
+or
+
+Another option is to rely on event bubbling and attach the event listener on the body element.
+
+```
+const element1 = document.querySelector('.a-class')
+const element2 = document.querySelector('.another-class')
+
+body.addEventListener('click', event => {
+  if (event.target !== element1 && event.target !== element2) {
+    return
+  }
+  //handle click
+}
+```
+
 ### 25.What is the difference between the return values of querySelector and querySelectorAll?
+
+The difference between querySelector() and querySelectorAll() is that querySelector() returns a single object with the first HTML element that matches the 'selectors', but querySelectorAll() returns an array of objects with all the HTML elements that match the 'selectors'.
 
 ### 26. What does a “nodelist” contain?
 
+A NodeList is a collection of document nodes (element nodes, attribute nodes, and text nodes). HTMLCollection items can be accessed by their name, id, or index number. NodeList items can only be accessed by their index number. An HTMLCollection is always a live collection.
+
 ### 27.Explain the difference between “capture” and “bubbling”.
+
+The procedure of event propagation from the farthest element to the closest element is called event capturing.
+
+```
+// selecting the grandParent, parent and child element
+// using getElementById() function
+const grandParent = document.getElementById('grandparent');
+const parent = document.getElementById('parent');
+const child = document.getElementById('child');
+
+// adding click event listener on grandparent
+grandParent.addEventListener("click", function () {
+  console.log("Grand parent div clicked");
+}, {capture: true});
+
+// adding click event listener on parent
+parent.addEventListener("click", function () {
+  console.log("Parent div clicked");
+}, {capture: true});
+
+// adding click event listener on child
+child.addEventListener("click", function () {
+  console.log("Child div clicked");
+}, {capture: true});
+```
+
+The procedure of event propagation from the closest element to the farthest element is called event bubbling.
+
+```
+// selecting the grandParent, parent and child element
+// using getElementById() function
+const grandParent = document.getElementById('grandparent');
+const parent = document.getElementById('parent');
+const child = document.getElementById('child');
+
+// adding click event listener on grandparent
+grandParent.addEventListener("click", function () {
+  console.log("Grand parent div clicked");
+});
+
+// adding click event listener on parent
+parent.addEventListener("click", function () {
+  console.log("Parent div clicked");
+});
+
+// adding click event listener on child
+child.addEventListener("click", function () {
+  console.log("Child div clicked");
+});
+```
 
 ### 28. What is the difference between objects and arrays?
 
+Objects represent a special data type that is mutable and can be used to store a collection of data (rather than just a single value).
+Arrays are a special type of variable that is also mutable and can also be used to store a list of values. So what exactly is the difference between objects and arrays
+
 ### 29. How do you access object properties?
+
+In 3 ways;
+
+1. Dot property accessor: object. property.
+2. Square brackets property access: object['property']
+3. Object destructuring: const { property } = object.
