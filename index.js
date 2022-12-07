@@ -51,8 +51,14 @@ for (let i = 0; i < operator.length; i++) {
     } else {
       let output = getOutput();
       let history = getHistory();
-      if (output != "") {
-        output = reverseNumberFormat(output);
+      if (output == "" && history != "") {
+        if (isNaN(history[history.length - 1])) {
+          history = history.substring(0, history.length - 1);
+        }
+      }
+      if (output != "" || history != "") {
+        //condiction?true:false
+        output = output == "" ? output : reverseNumberFormat(output);
         history = history + output;
         if (this.id == "=") {
           let result = eval(history);
