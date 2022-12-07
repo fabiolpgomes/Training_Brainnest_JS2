@@ -51,13 +51,17 @@ for (let i = 0; i < operator.length; i++) {
     } else {
       let output = getOutput();
       let history = getHistory();
-      if (output !== "") {
+      if (output != "") {
         output = reverseNumberFormat(output);
         history = history + output;
         if (this.id == "=") {
           let result = eval(history);
           printOutput(result);
           printHistory("");
+        } else {
+          history = history + this.id;
+          printHistory(history);
+          printOutput("");
         }
       }
     }
