@@ -9,7 +9,7 @@ In this Calculator, we can perform basic operations like addition, multiplicatio
 
 ![overview calculate](https://user-images.githubusercontent.com/99607827/206547383-34e8a33d-5872-4fdc-8f0c-36982e01cdd2.png)
 
-###index.js
+index.js
 
 ### 3. Assignment (Calculator):
 
