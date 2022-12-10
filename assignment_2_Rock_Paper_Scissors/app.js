@@ -14,7 +14,7 @@ const handleClick = (e) => {
   userChoice = e.target.id;
   userChoiceDisplay.innerHTML = "User choice: " + userChoice;
   computerPlay();
-  getResult();
+  playRound();
 };
 
 const computerPlay = () => {
@@ -31,7 +31,7 @@ for (let i = 0; i < choices.length; i++) {
   gameGrid.appendChild(button);
 }
 
-const getResult = () => {
+const playRound = () => {
   if (userChoice === computerChoice) {
     result = "Drawn";
   } else if (
@@ -45,4 +45,3 @@ const getResult = () => {
   }
   resultDisplay.innerHTML = result;
 };
-
