@@ -8,8 +8,9 @@ In this Calculator, we can perform basic operations like addition, multiplicatio
 
 ![overview calculator](https://user-images.githubusercontent.com/99607827/206860132-d2c3b387-9b48-4015-93d4-19bd369c20f6.png)
 
+## <a href="https://fabiolpgomes.github.io/Training_Brainnest_JS2/" target="_blank">Calculator</a>
 
-index.js
+
 
 ### 3. Assignment (Calculator):
 
@@ -59,3 +60,14 @@ f) Gotchas: watch out for and fix these bugs if they show up in your code:
   h) Advanced: Add a “backspace” button, so the user can undo if they click the wrong number.
   
   i) Advanced: Add keyboard support!
+  
+  
+  #### Repository created to run the proposed exercises
+
+## Built With
+
+<code><img align="center" alt="Ane-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
+  <img align="center" alt="Ane-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" alt="Ane-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+  </code>
+
