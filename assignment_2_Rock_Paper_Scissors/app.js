@@ -13,11 +13,11 @@ const handleClick = (e) => {
   //console.log('clicked')
   userChoice = e.target.id;
   userChoiceDisplay.innerHTML = "User choice: " + userChoice;
-  generateComputerChoice();
+  computerPlay();
   getResult();
 };
 
-const generateComputerChoice = () => {
+const computerPlay = () => {
   const randomChoice = choices[Math.floor(Math.random() * choices.length)];
   computerChoice = randomChoice;
   computerChoiceDisplay.innerHTML = "Computer Choice: " + computerChoice;
