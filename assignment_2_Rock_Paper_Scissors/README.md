@@ -9,3 +9,5 @@ c) Create three buttons, one for each selection. Add an event listener to the bu
 d) Add a div for displaying results and change all of your console.logs into DOM methods.
 
 e) Display the running score, and announce a winner of the game once one player reaches 5 points.
+
+![overview 2_assignment ](https://user-images.githubusercontent.com/99607827/206860527-1150fa24-7368-4f5d-9527-172fb1cbaaf0.png)
