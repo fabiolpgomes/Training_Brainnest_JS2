@@ -1,92 +1,112 @@
-function getHistory() {
-  return document.getElementById("history-value").innerText;
-}
+const calculator = {
+  displayValue: "0",
+  firstOperand: null,
+  waitingForSecondOperand: false,
+  operator: null,
+};
 
-function printHistory(num) {
-  document.getElementById("history-value").innerText = num;
-} //console.log("9*9+8");
+function inputDigit(digit) {
+  const { displayValue, waitingForSecondOperand } = calculator;
 
-function getOutput() {
-  return document.getElementById("output-value").innerText;
-}
-
-function printOutput(num) {
-  if (num == "") {
-    document.getElementById("output-value").innerText = num;
+  if (waitingForSecondOperand === true) {
+    calculator.displayValue = digit;
+    calculator.waitingForSecondOperand = false;
   } else {
-    document.getElementById("output-value").innerText = getFormattedNumber(num);
+    calculator.displayValue =
+      displayValue === "0" ? digit : displayValue + digit;
+  }
+
+  console.log(calculator);
+}
+
+function inputDecimal(dot) {
+  if (!calculator.displayValue.includes(dot)) {
+    calculator.displayValue += dot;
   }
 }
 
-function getFormattedNumber(num) {
-  if (num == "-") {
-    return ""; // for return negative numbers
+function handleOperator(nextOperator) {
+  const { firstOperand, displayValue, operator } = calculator;
+  // parseFloat converts the string contents of displayValue
+  const inputValue = parseFloat(displayValue);
+
+  // verify that fistrOperand is null and that the inputValue
+  // is not a NaN value
+  if (firstOperand == null && !isNaN(inputValue)) {
+    // update the firstOperand
+    calculator.firstOperand = inputValue;
+  } else if (operator) {
+    const result = calculate(firstOperand, inputValue, operator);
+
+    calculator.displayValue = String(result);
+    calculator.firstOperand = result;
   }
-  let n = Number(num);
-  let value = n.toLocaleString("en");
-  return value;
-}
-//printOutput("24689892");
 
-function reverseNumberFormat(num) {
-  return Number(num.replace(/,/g, ""));
-}
-//alert(reverseNumberFormat(getOutput()));
-
-let operator = document.getElementsByClassName("operator");
-for (let i = 0; i < operator.length; i++) {
-  operator[i].addEventListener("click", function () {
-    //console.log("The operator clicked: " + this.id);
-    if (this.id == "clear") {
-      printHistory("");
-      printOutput("");
-    } else if (this.id == "backspace") {
-      //console.log("The operator clicked: " + this.id);
-      let output = reverseNumberFormat(getOutput()).toString();
-      if (output) {
-        //if output has a value, print it
-        output = output.substring(0, output.length - 1); //expect output value of string -1
-        printOutput(output);
-      }
-    } else {
-      let output = getOutput();
-      let history = getHistory();
-      if (output == "" && history != "") {
-        if (isNaN(history[history.length - 1])) {
-          history = history.substring(0, history.length - 1);
-        }
-      }
-      if (output != "" || history != "") {
-        //condiction?true:false
-        output = output == "" ? output : reverseNumberFormat(output);
-        history = history + output;
-        if (this.id == "=") {
-          let result = eval(history);
-          printOutput(result);
-          printHistory("");
-        } else {
-          history = history + this.id;
-          printHistory(history);
-          printOutput("");
-        }
-      }
-    }
-  });
+  calculator.waitingForSecondOperand = true;
+  calculator.operator = nextOperator;
+  console.log(calculator);
 }
 
-let number = document.getElementsByClassName("number");
-for (let i = 0; i < number.length; i++) {
-  number[i].addEventListener("click", function () {
-    //console.log("The numbers clicked: " + this.id);
-    let output = reverseNumberFormat(getOutput());
-    if (output != NaN) {
-      //if output is a number
-      output = output + this.id;
-      printOutput(output);
-    } else {
-      history = history + this.id;
-      printHistory(history);
-      printOutput("");
-    }
-  });
+function calculate(firstOperand, secondOperand, operator) {
+  if (operator === "+") {
+    return firstOperand + secondOperand;
+  } else if (operator === "-") {
+    return firstOperand - secondOperand;
+  } else if (operator === "*") {
+    return firstOperand * secondOperand;
+  } else if (operator === "/") {
+    return firstOperand / secondOperand;
+  }
+
+  return secondOperand;
 }
+
+function resetCalculator() {
+  calculator.displayValue = "0";
+  calculator.firstOperand = null;
+  calculator.waitingForSecondOperand = false;
+  calculator.operator = null;
+  console.log(calculator);
+}
+
+function updateDisplay() {
+  const display = document.querySelector(".calculator-screen");
+  display.value = calculator.displayValue;
+}
+
+updateDisplay();
+
+const keys = document.querySelector(".calculator-keys");
+keys.addEventListener("click", (event) => {
+  // clicked element
+  const { target } = event;
+  const { value } = target;
+
+  if (!target.matches("button")) {
+    return;
+  }
+
+  switch (value) {
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+    case "=":
+      handleOperator(value);
+      break;
+    case ".":
+      inputDecimal(value);
+      break;
+    case "all-clear":
+      resetCalculator();
+      break;
+    default:
+      // check if the key is an integer
+
+      if (Number.isInteger(parseFloat(value))) {
+        inputDigit(value);
+      }
+  }
+
+  updateDisplay();
+});
