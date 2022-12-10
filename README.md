@@ -6,8 +6,8 @@
 Create a simple Program to build the Calculator in JavaScript using with HTML and CSS web language.
 In this Calculator, we can perform basic operations like addition, multiplication, subtraction, and division.
 
+![overview calculator](https://user-images.githubusercontent.com/99607827/206860132-d2c3b387-9b48-4015-93d4-19bd369c20f6.png)
 
-![overview calculate](https://user-images.githubusercontent.com/99607827/206547383-34e8a33d-5872-4fdc-8f0c-36982e01cdd2.png)
 
 index.js
 
