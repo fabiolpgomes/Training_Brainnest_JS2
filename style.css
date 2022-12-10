@@ -6,7 +6,7 @@ body {
 }
 
 .title {
-  font-size: 45px;
+  font-size: 50px;
   text-align: center;
 }
 
@@ -16,101 +16,95 @@ body {
   margin: 20px auto;
 }
 
-#calculator {
-  width: 320px;
-  height: 520px;
-  background-color: rgb(6, 76, 109);
-  margin: 0 auto;
-  top: 20px;
-  position: relative;
+.calculator {
+  border: 1px solid #fff;
   border-radius: 5px;
-  box-shadow: 10px 8px 18px 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #c1bdbd;
 }
 
-#result {
-  height: 120px;
-}
-
-#history {
+.calculator-screen {
+  width: 90%;
+  font-size: 4rem;
+  height: 90px;
+  border: none;
+  background-color: #252525;
+  color: #fff;
   text-align: right;
-  height: 20px;
-  margin: 0 20px;
-  padding-top: 20px;
-  font-size: 26px;
-  color: #e5c2c2;
+  padding-right: 30px;
+  padding-left: 10px;
 }
 
-#output {
-  text-align: right;
-  height: 60px;
-  margin: 10px 20px;
-  font-size: 32px;
-  color: #e5c2c2;
-}
-
-#keyboard {
-  height: 400px;
-}
-
-.operator,
-.number,
-.empty {
-  width: 50px;
+button {
   height: 50px;
-  margin: 15px;
-  float: left;
-  border-radius: 50%;
-  border-width: 0;
-  font-weight: bold;
-  font-size: 16px;
+  border-radius: 10%;
+  border: 1px solid #c4c4c4;
+  background-color: transparent;
+  font-size: 2rem;
+  color: #333;
 }
 
-.number,
-.empty {
-  background-color: #a2cae6;
+button.equal-sign {
+  border-radius: 8px;
 }
 
-.number,
-.operator {
+button:hover {
+  background-color: #eaeaea;
   cursor: pointer;
 }
 
-.operator:active,
-.number:active {
-  font-size: 13px;
-}
-
-.operator:focus,
-.number:focus,
-.empty:focus {
-  outline: 0;
-}
-
-button:nth-child(4) {
-  font-size: 20px;
+.operator1 {
   background-color: #20b2aa;
 }
 
-button:nth-child(8) {
-  font-size: 20px;
+.operator2 {
   background-color: #ffa500;
 }
 
-button:nth-child(12) {
-  font-size: 20px;
-  background-color: #f08080;
-}
-
-button:nth-child(16) {
-  font-size: 20px;
+.operator3 {
   background-color: #7d93e0;
 }
 
-button:nth-child(20) {
-  font-size: 20px;
+.operator4 {
   background-color: #9477af;
 }
 
-footer {
-  text-align: center;
+.all-clear {
+  background-color: #d3070e;
+  border-color: #c7242a;
+  color: #fff;
 }
+
+.all-clear:hover {
+  background-color: #f17377;
+}
+
+.equal-sign {
+  background-color: #2e86c0;
+  border-color: #337cac;
+  color: #fff;
+  height: 100%;
+  grid-area: 2 / 4 / 6 / 5;
+}
+
+.equal-sign:hover {
+  background-color: #8cd6f3;
+}
+
+.calculator-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+footer {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
