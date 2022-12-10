@@ -8,8 +8,9 @@ In this Calculator, we can perform basic operations like addition, multiplicatio
 
 ![overview calculator](https://user-images.githubusercontent.com/99607827/206860132-d2c3b387-9b48-4015-93d4-19bd369c20f6.png)
 
-https://fabiolpgomes.github.io/Training_Brainnest_JS2/
-index.js
+## <a href="https://fabiolpgomes.github.io/Training_Brainnest_JS2/" target="_blank">Calculator</a>
+
+
 
 ### 3. Assignment (Calculator):
 
